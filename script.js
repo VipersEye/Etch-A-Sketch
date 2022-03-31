@@ -4,6 +4,9 @@ let container = document.querySelector('.container');
 switchGridSize.addEventListener('input', gridChange);
 gridChange();
 
+let btnClear = document.querySelector('.btn_clear');
+btnClear.addEventListener('click', gridClear)
+
 function gridChange (){
     let gridDraw = document.querySelector('.container__grid');
     container.removeChild(gridDraw);
@@ -33,5 +36,12 @@ function pixelEvent(pixels) {
         pixel.addEventListener('mouseenter', (evt)=>{
             evt.target.style['background-color'] = '#000';
         });
+    });
+}
+
+function gridClear() {
+    let pixels = document.querySelectorAll('.grid__pixel');
+    pixels.forEach(pixel => {
+        pixel.style['background-color'] = '#fff';
     });
 }
