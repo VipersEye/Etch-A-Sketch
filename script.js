@@ -1,5 +1,6 @@
 let switchGridSize = document.querySelector('.grid-size__input');
 let btnClear = document.querySelector('.btn_clear');
+let color = '#777'
 
 btnClear.addEventListener('click', gridClear);
 switchGridSize.addEventListener('input', (evt)=>{
@@ -28,7 +29,7 @@ function gridCreate (gridType, gridSize){
     let pixels = document.querySelectorAll('.grid__pixel');
 
     if (gridType == 'container_draw') {
-        pixelEvent(pixels);
+        pixelEvent(gridNew, pixels);
     }
 
     else if (gridType == 'container_colors') {
@@ -37,12 +38,26 @@ function gridCreate (gridType, gridSize){
     
 }
 
-function pixelEvent(pixels) {
-    pixels.forEach(pixel => {
-        pixel.addEventListener('mouseenter', (evt)=>{
-            evt.target.style['background-color'] = '#000';
-        });
+function pixelEvent(grid, pixels) {
+
+    grid.addEventListener('mousedown', (evt)=>{
+        pixelFill(evt);
+        let pixels = evt.currentTarget.querySelectorAll('.grid__pixel');
+        pixels.forEach(pixel => {
+            pixel.addEventListener('mouseenter', pixelFill);
+        });        
     });
+
+    grid.addEventListener('mouseup', (evt)=>{
+        let pixels = evt.currentTarget.querySelectorAll('.grid__pixel');
+        pixels.forEach(pixel => {
+            pixel.removeEventListener('mouseenter', pixelFill);
+        }); 
+    });
+}
+
+let pixelFill = (pixel) => {
+    pixel.target.style['background-color'] = color;
 }
 
 function gridClear() {
