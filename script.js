@@ -11,9 +11,16 @@ switchGridSize.addEventListener('input', (evt)=>{
 
 btnEraser.addEventListener('click', eraserSwitching);
 
+equalGridWidth();
+
 gridCreate('container_draw', switchGridSize.value);
 gridCreate('container_colors', 10);
 
+function equalGridWidth() {
+    let grid = document.querySelector('.container_draw');
+    let height = grid.offsetHeight + 'px';
+    grid.style.width = height;
+}
 
 function eraserSwitching (evt) {
     evt.target.classList.toggle('eraser_off');
