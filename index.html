@@ -13,10 +13,10 @@
         <h1 class="header">Etch A Sketch</h1>
         <div class="main-section">
 
-            <div class="instrument-panel">
+            <div class="panel">
                 <div class="grid-size">
                     <label class="grid-size__label" for="grid-size">Grid size</label>
-                    <input class="grid-size__input" id="grid-size" type="range" min="1" max="100">
+                    <input class="grid-size__input" id="grid-size" value="16" type="range" min="1" max="100">
                 </div>
 
                 <div id="switch-color" class="switch">
@@ -31,19 +31,25 @@
                     <div class="switch__thumb"></div>
                 </div>
 
-                <button class="eraser"></button>
+                <button class="eraser">Eraser</button>
 
                 <button class="btn btn_clear">Clear all</button>
             </div>
 
-            <div class="container">
-                <div class="grid container__grid"></div>
+            <div class="draw-section">
+                <div class="container_draw">
+                    <div class="grid main__grid"></div>
+                </div>
             </div>
 
-            <div class="instrument-panel">
-                <div class="grid panel__grid"></div>
-                <div class="current-color"></div>
-                <div class="current-color"></div>
+            <div class="panel panel-colors">
+                <div class="container_colors">
+                    <div class="grid"></div>
+                </div>
+                <div>
+                    <div class="current-color"></div>
+                    <div class="current-color"></div>
+                </div>
                 <button class="btn btn_grid-reset">New colors</button>
             </div>
 
