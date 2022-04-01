@@ -1,34 +1,40 @@
 let switchGridSize = document.querySelector('.grid-size__input');
-let gridDraw = document.querySelector('.container__grid');
-let container = document.querySelector('.container');
-switchGridSize.addEventListener('input', gridChange);
-gridChange();
-
 let btnClear = document.querySelector('.btn_clear');
-btnClear.addEventListener('click', gridClear)
 
-function gridChange (){
-    let gridDraw = document.querySelector('.container__grid');
-    container.removeChild(gridDraw);
-    let newGrid = document.createElement('div')
-    newGrid.classList.add('container__grid');
-    let n = switchGridSize.value;
-    let pixelSize = 100/n + '%';
-    let pixel = document.createElement('div');
-    pixel.style.cssText = `width: ${pixelSize}; height: ${pixelSize};`;
-    pixel.classList.add('grid__pixel');
-    for(let i = 0; i < n*n; i++) {
-        let pixelSize = 100/n + '%';
+btnClear.addEventListener('click', gridClear);
+switchGridSize.addEventListener('input', (evt)=>{
+    gridCreate('container_draw', evt.target.value);
+});
+
+gridCreate('container_draw', switchGridSize.value);
+gridCreate('container_colors', 10);
+
+function gridCreate (gridType, gridSize){
+    let container = document.querySelector(`.${gridType}`);
+    let gridCurrent = container.querySelector(`.grid`);
+    let gridNew = document.createElement('div');
+    let pixelSize = 100/gridSize + '%';
+    gridNew.classList.add('grid');
+    container.removeChild(gridCurrent);
+    for(let i = 0; i < gridSize*gridSize; i++) {
         let pixel = document.createElement('div');
         pixel.style.cssText = `width: ${pixelSize}; height: ${pixelSize};`;
         pixel.classList.add('grid__pixel');
-        newGrid.appendChild(pixel);
+        gridNew.appendChild(pixel);
     }
 
-    container.appendChild(newGrid);
+    container.appendChild(gridNew);
 
     let pixels = document.querySelectorAll('.grid__pixel');
-    pixelEvent(pixels);
+
+    if (gridType == 'container_draw') {
+        pixelEvent(pixels);
+    }
+
+    else if (gridType == 'container_colors') {
+
+    }
+    
 }
 
 function pixelEvent(pixels) {
