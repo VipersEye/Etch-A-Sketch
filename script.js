@@ -9,7 +9,13 @@ switchGridSize.addEventListener('input', (evt)=>{
     gridCreate('container_draw', evt.target.value);
 });
 
-btnEraser.addEventListener('click', (evt)=>{
+btnEraser.addEventListener('click', eraserSwitching);
+
+gridCreate('container_draw', switchGridSize.value);
+gridCreate('container_colors', 10);
+
+
+function eraserSwitching (evt) {
     evt.target.classList.toggle('eraser_off');
     evt.target.classList.toggle('eraser_on');
     if (evt.target.classList.contains('eraser_on')) {
@@ -18,12 +24,8 @@ btnEraser.addEventListener('click', (evt)=>{
     else if (evt.target.classList.contains('eraser_off')) {
         color = colorMain.getAttribute('value');
     }
-});
+}
 
-
-
-gridCreate('container_draw', switchGridSize.value);
-gridCreate('container_colors', 10);
 
 function gridCreate (gridType, gridSize){
     let container = document.querySelector(`.${gridType}`);
@@ -69,7 +71,7 @@ function pixelEvent(grid) {
     });
 }
 
-let pixelFill = (pixel) => {
+function pixelFill (pixel) {
     pixel.target.style['background-color'] = color;
 }
 
