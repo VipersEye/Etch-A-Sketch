@@ -1,10 +1,25 @@
 let switchGridSize = document.querySelector('.grid-size__input');
 let btnClear = document.querySelector('.btn_clear');
 let btnEraser = document.querySelector('.eraser');
-let color = '#000';
-let colorMain = document.querySelector('.current-color');
+let colorMain = document.querySelector('.color_first');
+let colorPickers = document.querySelectorAll('.color');
+let colorCurrent = colorMain.value;
+
+colorPickers.forEach(colorPicker => {
+    colorPicker.addEventListener('change', currentColorChange);
+    colorPicker.addEventListener('click', currentColorChange);
+});
+
+function currentColorChange(evt) {
+    let colorWrappers = document.querySelectorAll('.color');
+    colorWrappers.forEach(colorWrapper => {
+        colorWrapper.classList.toggle('color_active');
+    });
+    colorCurrent = evt.target.value;
+}
 
 btnClear.addEventListener('click', gridClear);
+
 switchGridSize.addEventListener('input', (evt)=>{
     gridCreate('container_draw', evt.target.value);
 });
@@ -26,10 +41,10 @@ function eraserSwitching (evt) {
     evt.target.classList.toggle('eraser_off');
     evt.target.classList.toggle('eraser_on');
     if (evt.target.classList.contains('eraser_on')) {
-        color = '#fff';
+        colorCurrent = '#fff';
     }
     else if (evt.target.classList.contains('eraser_off')) {
-        color = colorMain.getAttribute('value');
+        colorCurrent = colorMain.value;
     }
 }
 
@@ -79,7 +94,7 @@ function pixelEvent(grid) {
 }
 
 function pixelFill (pixel) {
-    pixel.target.style['background-color'] = color;
+    pixel.target.style['background-color'] = colorCurrent;
 }
 
 function gridClear() {
