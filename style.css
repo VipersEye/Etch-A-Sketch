@@ -109,9 +109,9 @@ h1, h2, h3, h4, h5, h6 {
     border: 1px solid #000;
 }
 
-.grid__pixel:hover {
+/* .grid__pixel:hover {
     border-color: #555454;
-}
+} */
 
 .container_colors {
     width: 304px;
