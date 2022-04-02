@@ -1,8 +1,10 @@
 let switchGridSize = document.querySelector('.grid-size__input');
 let btnRandomColor = document.querySelector('.btn_random-color');
 let btnDisplayGrid = document.querySelector('.btn_grid');
-let btnClear = document.querySelector('.btn_clear');
+let btnColorMix = document.querySelector('.btn_mixing');
 let btnEraser = document.querySelector('.btn_eraser');
+let btnClear = document.querySelector('.btn_clear');
+
 let colorMain = document.querySelector('.color_first');
 let colorPickers = document.querySelectorAll('.color');
 let colorCurrent = colorMain.value;
@@ -14,6 +16,8 @@ switchGridSize.addEventListener('input', (evt)=>{
 btnRandomColor.addEventListener('click', btnClassToggle);
 
 btnDisplayGrid.addEventListener('click', gridDisplayChange);
+
+btnColorMix.addEventListener('click', btnClassToggle);
 
 btnEraser.addEventListener('click', eraserSwitching);
 
@@ -57,9 +61,14 @@ function gridDisplayChange(evt) {
 
 function currentColorChange(evt) {
     let colorWrappers = document.querySelectorAll('.color');
-    colorWrappers.forEach(colorWrapper => {
-        colorWrapper.classList.toggle('color_active');
-    });
+    if (evt.target.parentElement == colorWrappers[0]) {
+        colorWrappers[0].classList.add('color_active');
+        colorWrappers[1].classList.remove('color_active');
+    }
+    else {
+        colorWrappers[1].classList.add('color_active');
+        colorWrappers[0].classList.remove('color_active');
+    } 
     colorCurrent = evt.target.value;
 }
 
