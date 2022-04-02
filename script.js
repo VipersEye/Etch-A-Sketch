@@ -1,4 +1,5 @@
 let switchGridSize = document.querySelector('.grid-size__input');
+let btnRandomColor = document.querySelector('.btn_random-color');
 let btnDisplayGrid = document.querySelector('.btn_grid');
 let btnClear = document.querySelector('.btn_clear');
 let btnEraser = document.querySelector('.btn_eraser');
@@ -6,20 +7,22 @@ let colorMain = document.querySelector('.color_first');
 let colorPickers = document.querySelectorAll('.color');
 let colorCurrent = colorMain.value;
 
+switchGridSize.addEventListener('input', (evt)=>{
+    gridCreate('container_draw', evt.target.value);
+});
+
+btnRandomColor.addEventListener('click', btnClassToggle);
+
 btnDisplayGrid.addEventListener('click', gridDisplayChange);
+
+btnEraser.addEventListener('click', eraserSwitching);
+
+btnClear.addEventListener('click', gridClear);
 
 colorPickers.forEach(colorPicker => {
     colorPicker.addEventListener('change', currentColorChange);
     colorPicker.addEventListener('click', currentColorChange);
 });
-
-btnClear.addEventListener('click', gridClear);
-
-switchGridSize.addEventListener('input', (evt)=>{
-    gridCreate('container_draw', evt.target.value);
-});
-
-btnEraser.addEventListener('click', eraserSwitching);
 
 equalGridWidth();
 
@@ -32,10 +35,14 @@ function equalGridWidth() {
     grid.style.width = height;
 }
 
-function gridDisplayChange(evt) {
-    let pixels = document.querySelectorAll('.container_draw .grid .grid__pixel');
+function btnClassToggle (evt) {
     evt.target.classList.toggle('btn_off');
     evt.target.classList.toggle('btn_on');
+}
+
+function gridDisplayChange(evt) {
+    let pixels = document.querySelectorAll('.container_draw .grid .grid__pixel');
+    btnClassToggle(evt);
     if (evt.target.classList.contains('btn_on')) {
         pixels.forEach(pixel => {
             pixel.style.border = '1px solid #000';
@@ -57,8 +64,7 @@ function currentColorChange(evt) {
 }
 
 function eraserSwitching (evt) {
-    evt.target.classList.toggle('btn_off');
-    evt.target.classList.toggle('btn_on');
+    btnClassToggle(evt);
     if (evt.target.classList.contains('btn_on')) {
         colorCurrent = '#fff';
     }
@@ -113,7 +119,13 @@ function pixelEvent(grid) {
 }
 
 function pixelFill (pixel) {
-    pixel.target.style['background-color'] = colorCurrent;
+    if (btnRandomColor.classList.contains('btn_on')) {
+        let colorRandom = `rgb(${Math.floor(Math.random()*100)},${Math.floor(Math.random()*100)},${Math.floor(Math.random()*100)})`;
+        pixel.target.style['background-color'] = colorRandom;
+    }
+    else {
+        pixel.target.style['background-color'] = colorCurrent;
+    }
 }
 
 function gridClear() {
