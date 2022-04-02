@@ -127,10 +127,15 @@ h1, h2, h3, h4, h5, h6 {
     width: 60px;
     height: 60px;
 
-    border: 7px solid goldenrod;
     border-radius: 50%;
+    border: 7px solid; 
+    border-color: #866105;
 
     overflow: hidden;
+}
+
+.color_active {
+    border-color: #daa520;
 }
 
 .color-picker {
