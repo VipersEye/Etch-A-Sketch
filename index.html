@@ -13,40 +13,33 @@
         <h1 class="header">Etch A Sketch</h1>
         <div class="main-section">
 
-            <div class="panel panel-instruments">
+            <div class="panel panel_left">
                 <div class="grid-size">
                     <label class="grid-size__label" for="grid-size">Grid size</label>
                     <input class="grid-size__input" id="grid-size" value="16" type="range" min="1" max="100">
-                </div>
-
-                <div id="switch-color" class="switch">
-                    <div class="switch__thumb"></div>
-                </div>
-
-                <div id="switch-grid" class="switch">
-                    <div class="switch__thumb"></div>
-                </div>
-
-                <div id="switch-scale" class="switch">
-                    <div class="switch__thumb"></div>
-                </div>
-
+                </div>  
+                <button id="switch-color" class="switch">Random color</button>
+                <button id="switch-grid" class="switch">Display grid</button>
+                <button id="switch-scale" class="switch">Mixing colors</button>
                 <button class="eraser eraser_off">Eraser</button>
-
                 <button class="btn btn_clear">Clear all</button>
             </div>
 
             <div class="container_draw">
-                <div class="grid main__grid"></div>
+                <div class="grid"></div>
             </div>
 
-            <div class="panel panel-colors">
+            <div class="panel panel_right">
                 <div class="container_colors">
                     <div class="grid"></div>
                 </div>
                 <div>
-                    <div value="#000" class="current-color"></div>
-                    <div class="current-color"></div>
+                    <div class="color">
+                        <input type="color" value="#000000" class="color-picker color_first">
+                    </div>
+                    <div class="color">
+                        <input type="color" value="#FF0000" class=" color-picker color_second">
+                    </div>
                 </div>
                 <button class="btn btn_grid-reset">New colors</button>
             </div>
