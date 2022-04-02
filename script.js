@@ -132,8 +132,35 @@ function pixelFill (pixel) {
         let colorRandom = `rgb(${Math.floor(Math.random()*100)},${Math.floor(Math.random()*100)},${Math.floor(Math.random()*100)})`;
         pixel.target.style['background-color'] = colorRandom;
     }
+
+    else if (btnColorMix.classList.contains('btn_on')) {
+        pixel.target.style['background-color'] = colorMix(pixel);
+    }
+
     else {
         pixel.target.style['background-color'] = colorCurrent;
+    }
+}
+
+function colorMix (pixel) {
+    if (pixel.target.style.backgroundColor) {
+        let colorPixel = pixel.target.style.backgroundColor.slice(4,-1);
+        let pixelRGB = colorPixel.split(',');
+        let pixelR = +pixelRGB[0];
+        let pixelG = +pixelRGB[1].trim();
+        let pixelB = +pixelRGB[2].trim();
+
+        let currentR = parseInt(colorCurrent.substr(1,2),16);
+        let currentG = parseInt(colorCurrent.substr(3,2),16);
+        let currentB = parseInt(colorCurrent.substr(5,2),16);
+
+        let colorMixed = `rgb(${(pixelR + currentR)/2}, ${(pixelG + currentG)/2}, ${(pixelB + currentB)/2})`;
+
+        return colorMixed;
+    }
+
+    else {
+        return colorCurrent;
     }
 }
 
