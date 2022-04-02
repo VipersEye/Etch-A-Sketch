@@ -1,6 +1,6 @@
 let switchGridSize = document.querySelector('.grid-size__input');
 let btnClear = document.querySelector('.btn_clear');
-let btnEraser = document.querySelector('.eraser');
+let btnEraser = document.querySelector('.btn_eraser');
 let colorMain = document.querySelector('.color_first');
 let colorPickers = document.querySelectorAll('.color');
 let colorCurrent = colorMain.value;
@@ -38,13 +38,13 @@ function equalGridWidth() {
 }
 
 function eraserSwitching (evt) {
-    evt.target.classList.toggle('eraser_off');
-    evt.target.classList.toggle('eraser_on');
-    if (evt.target.classList.contains('eraser_on')) {
+    evt.target.classList.toggle('btn_off');
+    evt.target.classList.toggle('btn_on');
+    if (evt.target.classList.contains('btn_on')) {
         colorCurrent = '#fff';
     }
-    else if (evt.target.classList.contains('eraser_off')) {
-        colorCurrent = colorMain.value;
+    else if (evt.target.classList.contains('btn_off')) {
+        colorCurrent = document.querySelector('.color_active').querySelector('.color-picker').value;
     }
 }
 
