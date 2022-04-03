@@ -1,3 +1,6 @@
+// если использовать clearAll , то он ставит пикселям белый цвет фона и миксование цветов
+//  начинает ломаться. После ластика то же самое. Мб стоит сделать background none
+
 let switchGridSize = document.querySelector('.grid-size__input');
 let btnRandomColor = document.querySelector('.btn_random-color');
 let btnDisplayGrid = document.querySelector('.btn_grid');
@@ -75,7 +78,7 @@ function currentColorChange(evt) {
 function eraserSwitching (evt) {
     btnClassToggle(evt);
     if (evt.target.classList.contains('btn_on')) {
-        colorCurrent = '#fff';
+        colorCurrent = 'transparent';
     }
     else if (evt.target.classList.contains('btn_off')) {
         colorCurrent = document.querySelector('.color_active').querySelector('.color-picker').value;
@@ -143,7 +146,7 @@ function pixelFill (pixel) {
 }
 
 function colorMix (pixel) {
-    if (pixel.target.style.backgroundColor) {
+    if (pixel.target.style.backgroundColor && pixel.target.style.backgroundColor != 'transparent') {
         let colorPixel = pixel.target.style.backgroundColor.slice(4,-1);
         let pixelRGB = colorPixel.split(',');
         let pixelR = +pixelRGB[0];
@@ -167,6 +170,6 @@ function colorMix (pixel) {
 function gridClear() {
     let pixels = document.querySelectorAll('.grid__pixel');
     pixels.forEach(pixel => {
-        pixel.style['background-color'] = '#fff';
+        pixel.style['background-color'] = 'transparent';
     });
 }
