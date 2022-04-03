@@ -1,5 +1,5 @@
 :root {
-    --main-color: #000;
+    --main-color: #000; 
     --secondary-color: #fff;
 }
 
@@ -84,10 +84,6 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 50%;
 
     transition: transform .5s linear;
-}
-
-.app-mode:hover .app-mode__inner {
-    transform: rotate(180deg);
 }
 
 .icon {

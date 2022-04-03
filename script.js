@@ -1,6 +1,4 @@
-// если использовать clearAll , то он ставит пикселям белый цвет фона и миксование цветов
-//  начинает ломаться. После ластика то же самое. Мб стоит сделать background none
-
+let btnModeSwitch = document.querySelector('.app-mode');
 let switchGridSize = document.querySelector('.grid-size__input');
 let btnRandomColor = document.querySelector('.btn_random-color');
 let btnDisplayGrid = document.querySelector('.btn_grid');
@@ -11,6 +9,8 @@ let btnClear = document.querySelector('.btn_clear');
 let colorMain = document.querySelector('.color_first');
 let colorPickers = document.querySelectorAll('.color');
 let colorCurrent = colorMain.value;
+
+btnModeSwitch.addEventListener('click', modeSwitch);
 
 switchGridSize.addEventListener('input', (evt)=>{
     gridCreate('container_draw', evt.target.value);
@@ -35,6 +35,31 @@ equalGridWidth();
 
 gridCreate('container_draw', switchGridSize.value);
 gridCreate('container_colors', 10);
+
+function modeSwitch(evt) {
+    let btnModeSwitch = evt.currentTarget;
+    let circleSumMoon = btnModeSwitch.querySelector('.app-mode__inner');
+    let circleRotate = circleSumMoon.style.transform;
+    if (circleRotate) {
+        let deg = +circleRotate.substr(7).replace('deg)','');
+        let degNew = deg + 180;
+        circleSumMoon.style.cssText = `transform: rotate(${degNew}deg);`;
+    }
+    else {
+        circleSumMoon.style.cssText = 'transform: rotate(180deg);';
+    }
+    btnModeSwitch.classList.toggle('light-mode');
+    btnModeSwitch.classList.toggle('dark-mode');
+    let root = document.documentElement.style;
+    if (btnModeSwitch.classList.contains('light-mode')) {
+        root.setProperty('--main-color', '#000');
+        root.setProperty('--secondary-color', '#fff');
+    }
+    else if (btnModeSwitch.classList.contains('dark-mode')) {
+        root.setProperty('--main-color', 'goldenrod');
+        root.setProperty('--secondary-color', '#000');
+    }
+}
 
 function equalGridWidth() {
     let grid = document.querySelector('.container_draw');
