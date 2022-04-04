@@ -83,7 +83,7 @@ h1, h2, h3, h4, h5, h6 {
     border: 5px dotted var(--main-color);
     border-radius: 50%;
 
-    transition: transform .5s linear;
+    transition: transform .6s linear;
 }
 
 .icon {

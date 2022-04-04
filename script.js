@@ -39,15 +39,7 @@ gridCreate('container_colors', 8);
 function modeSwitch(evt) {
     let btnModeSwitch = evt.currentTarget;
     let circleSumMoon = btnModeSwitch.querySelector('.app-mode__inner');
-    let circleRotate = circleSumMoon.style.transform;
-    if (circleRotate) {
-        let deg = +circleRotate.substr(7).replace('deg)','');
-        let degNew = deg + 180;
-        circleSumMoon.style.cssText = `transform: rotate(${degNew}deg);`;
-    }
-    else {
-        circleSumMoon.style.cssText = 'transform: rotate(180deg);';
-    }
+    blockRotate(circleSumMoon, 180);
 
     let pixels = document.querySelectorAll('.container_draw .grid .grid__pixel');
     btnModeSwitch.classList.toggle('light-mode');
@@ -119,7 +111,6 @@ function eraserSwitching (evt) {
         colorCurrent = document.querySelector('.color_active').querySelector('.color-picker').value;
     }
 }
-
 
 function gridCreate (gridType, gridSize){
     let container = document.querySelector(`.${gridType}`);
@@ -211,20 +202,17 @@ function gridClear() {
 
 function iconsRotate(){
     let icons = document.querySelectorAll('.icon');
-
-    icons.forEach(icon => {
-        let iconRotate = icon.style.transform;
-        if (iconRotate) {
-            let deg = +iconRotate.substr(7).replace('deg)','');
-            let degNew = deg + 0.5;
-            icon.style.cssText = `transform: rotate(${degNew}deg);`;
-        }
-        else {
-            icon.style.cssText = 'transform: rotate(180deg);';
-        } 
+    icons.forEach(icon=>{
+        blockRotate(icon, 0.5);
     });
-    
     setTimeout(iconsRotate, 100);
-} 
+}
+
+function blockRotate(block, degStep) {
+    let blockRotate = block.style.transform;
+    let deg = +blockRotate.substr(7).replace('deg)','');
+    let degNew = deg + degStep;
+    block.style.cssText = `transform: rotate(${degNew}deg);`;
+}
 
 iconsRotate();
