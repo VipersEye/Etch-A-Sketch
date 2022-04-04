@@ -34,7 +34,7 @@ colorPickers.forEach(colorPicker => {
 equalGridWidth();
 
 gridCreate('container_draw', switchGridSize.value);
-gridCreate('container_colors', 10);
+gridCreate('container_colors', 8);
 
 function modeSwitch(evt) {
     let btnModeSwitch = evt.currentTarget;
@@ -48,6 +48,8 @@ function modeSwitch(evt) {
     else {
         circleSumMoon.style.cssText = 'transform: rotate(180deg);';
     }
+
+    let pixels = document.querySelectorAll('.container_draw .grid .grid__pixel');
     btnModeSwitch.classList.toggle('light-mode');
     btnModeSwitch.classList.toggle('dark-mode');
     let root = document.documentElement.style;
@@ -59,6 +61,12 @@ function modeSwitch(evt) {
         root.setProperty('--main-color', 'goldenrod');
         root.setProperty('--secondary-color', '#000');
     }
+
+    let color = root.getPropertyValue('--main-color');
+
+    pixels.forEach(pixel => {
+        pixel.style.setProperty('border-color', `${color}`);
+    });
 }
 
 function equalGridWidth() {
@@ -74,10 +82,12 @@ function btnClassToggle (evt) {
 
 function gridDisplayChange(evt) {
     let pixels = document.querySelectorAll('.container_draw .grid .grid__pixel');
+    let root = document.documentElement.style;
+    let color = root.getPropertyValue('--main-color');
     btnClassToggle(evt);
     if (evt.target.classList.contains('btn_on')) {
         pixels.forEach(pixel => {
-            pixel.style.border = '1px solid #000';
+            pixel.style.border = '1px solid ' + color;
         });
     }
     else if (evt.target.classList.contains('btn_off')) {
@@ -157,7 +167,7 @@ function pixelEvent(grid) {
 
 function pixelFill (pixel) {
     if (btnRandomColor.classList.contains('btn_on')) {
-        let colorRandom = `rgb(${Math.floor(Math.random()*100)},${Math.floor(Math.random()*100)},${Math.floor(Math.random()*100)})`;
+        let colorRandom = `rgb(${Math.floor(Math.random()*256)},${Math.floor(Math.random()*256)},${Math.floor(Math.random()*256)})`;
         pixel.target.style['background-color'] = colorRandom;
     }
 
