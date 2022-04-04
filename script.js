@@ -208,3 +208,23 @@ function gridClear() {
         pixel.style['background-color'] = 'transparent';
     });
 }
+
+function iconsRotate(){
+    let icons = document.querySelectorAll('.icon');
+
+    icons.forEach(icon => {
+        let iconRotate = icon.style.transform;
+        if (iconRotate) {
+            let deg = +iconRotate.substr(7).replace('deg)','');
+            let degNew = deg + 0.5;
+            icon.style.cssText = `transform: rotate(${degNew}deg);`;
+        }
+        else {
+            icon.style.cssText = 'transform: rotate(180deg);';
+        } 
+    });
+    
+    setTimeout(iconsRotate, 100);
+} 
+
+iconsRotate();

@@ -87,26 +87,26 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .icon {
-    position: absolute;
-    left: 50%;
+    position: absolute;    
     z-index: 1;
 
     border-radius: 50%;
 
-    transform: translate3d(-50%,0,0);
 }
 
 .icon_sun {
     width: 75px;
     height: 75px;
 
-    top: -35px;
+    top: -37px;
+    left: 20%;
 
     fill: gold;
 }
 
 .icon_moon {
-    bottom: -20px;
+    bottom: -25px;
+    left: 39px;
 
     height: 50px;
     width: 50px;
@@ -170,7 +170,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .grid__pixel {
-    border: 1px solid var(--main-color);
+    border: 1px solid var(--main-color); 
 }
 
 .container_colors {
