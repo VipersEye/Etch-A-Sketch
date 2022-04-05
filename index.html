@@ -62,7 +62,7 @@
     </svg>
 
     <div class="wrapper">
-        <h1 class="header">Etch A Sketch</h1>
+        
         <div class="main-section">
 
             <div class="panel panel_left">
@@ -78,26 +78,48 @@
                         </svg>
                     </div>
                 </div>
+
                 <div class="grid-size">
                     <label class="grid-size__label" for="grid-size">Grid size</label>
                     <input class="grid-size__input" id="grid-size" value="16" type="range" min="1" max="100">
                 </div>  
+
                 <button class="btn btn_random-color btn_off">Random color</button>
                 <button class="btn btn_grid btn_on">Display grid</button>
                 <button class="btn btn_mixing btn_off">Mixing colors</button>
                 <button class="btn btn_eraser btn_off">Eraser</button>
                 <button class="btn btn_clear">Clear all</button>
-            </div>
+
+                <footer class="footer">Created by VipersEye 
+                    <a href="">
+                        <img src="" alt="">
+                    </a>
+                </footer>
+            </div> <!-- /panel-left -->
+
 
             <div class="container_draw">
                 <div class="grid"></div>
-            </div>
+            </div> <!-- /container_draw -->
+
 
             <div class="panel panel_right">
-                <div class="container_colors">
-                    <div class="grid"></div>
+
+                <h1 class="header">Etch A Sketch</h1>
+
+                <div class="color-accordion">
+                    <div class="color-accordion__inner">
+                        <div class="container_colors">
+                            <div class="grid"></div>
+                        </div>
+                        <button class="btn btn_new-colors">New colors</button>
+                    </div>
+                    <button class="btn color-grid-display">
+                        <div class="arrow"></div>
+                    </button>
                 </div>
-                <div>
+
+                <div class="color-pickers">
                     <div class="color color_active">
                         <input type="color" value="#000000" class="color-picker color_first">
                     </div>
@@ -105,13 +127,13 @@
                         <input type="color" value="#FF0000" class=" color-picker color_second">
                     </div>
                 </div>
-                <button class="btn btn_grid-reset">New colors</button>
-            </div>
 
-        </div>
-        <footer class="footer">Created by VipersEye</footer>
-    </div>
+            </div> <!-- panel-right -->
 
+        </div> <!-- /main-section -->
+        
+    </div> <!-- /wrapper --> 
+    
     <script src="./script.js"></script>
 </body>
 </html>
