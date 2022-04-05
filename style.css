@@ -1,3 +1,5 @@
+/* common styles ======================= */
+
 :root {
     --main-color: #000; 
     --secondary-color: #fff;
@@ -159,24 +161,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .color-accordion {
-    position: relative;
-
-    width: 350px;
-    height: 304px;
-    margin-bottom: 40px;
+    max-height: 372px;
+    margin-bottom: 30px;
 
     display: flex;
-    justify-content: flex-end;
-    align-self: flex-end;  
-}
+    flex-direction: column;
 
-.color-accordion__inner {
-    position: absolute;
-    left: 0;
+    overflow: hidden;
 
-    width: 100%;
-
-    /* transform: translate3d(150%,0,0); */
+    transition: max-height 1.4s ease-in-out;
 }
 
 .container_colors {
@@ -192,11 +185,12 @@ h1, h2, h3, h4, h5, h6 {
     height: 34px;
 }
 
-.color-grid-display {
-    height: 304px;
+.btn_accordion {
+    height: 34px;
+    flex: 0 0 auto;
 }
 
-.arrow {
+/* .arrow {
     width: 30px;
     height: 30px;
 
@@ -204,7 +198,7 @@ h1, h2, h3, h4, h5, h6 {
     border-top: 4px solid var(--main-color);
 
     transform: rotate(-45deg);
-}
+} */
 
 .color-pickers {
 
