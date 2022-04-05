@@ -6,6 +6,7 @@ let btnColorMix = document.querySelector('.btn_mixing');
 let btnEraser = document.querySelector('.btn_eraser');
 let btnClear = document.querySelector('.btn_clear');
 
+let btnColorsDisplay = document.querySelector('.btn_accordion');
 let colorMain = document.querySelector('.color_first');
 let colorPickers = document.querySelectorAll('.color');
 let colorCurrent = colorMain.value;
@@ -26,6 +27,10 @@ btnEraser.addEventListener('click', eraserSwitching);
 
 btnClear.addEventListener('click', gridClear);
 
+
+
+btnColorsDisplay.addEventListener('click', accordionSwitch);
+
 colorPickers.forEach(colorPicker => {
     colorPicker.addEventListener('change', currentColorChange);
     colorPicker.addEventListener('click', currentColorChange);
@@ -34,7 +39,11 @@ colorPickers.forEach(colorPicker => {
 equalGridWidth();
 
 gridCreate('container_draw', switchGridSize.value);
+
 gridCreate('container_colors', 8);
+gridColorsFill();
+
+iconsRotate();
 
 function modeSwitch(evt) {
     let btnModeSwitch = evt.currentTarget;
@@ -248,6 +257,13 @@ function colorRgbToHex(evt ) {
     return pixelHex;
 }
 
-gridColorsFill();
-
-iconsRotate();
+function accordionSwitch(evt) {
+    let accordion = document.querySelector('.color-accordion');
+    btnClassToggle(evt);
+    if (btnColorsDisplay.classList.contains('btn_off')){
+        accordion.style.maxHeight = '34px';
+    }
+    else if (btnColorsDisplay.classList.contains('btn_on')){
+        accordion.style.maxHeight = '';
+    }
+}
