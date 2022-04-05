@@ -215,4 +215,50 @@ function blockRotate(block, degStep) {
     block.style.cssText = `transform: rotate(${degNew}deg);`;
 }
 
+function gridColorsFill() {
+    let pixels = document.querySelectorAll('.container_colors .grid__pixel');
+    pixels.forEach(pixel=>{
+        let colorRandom = `rgb(${Math.floor(Math.random()*256)},${Math.floor(Math.random()*256)},${Math.floor(Math.random()*256)})`;
+        pixel.style['background-color'] = colorRandom;
+        pixelColorEvent(pixel);
+    });
+}
+
+function pixelColorEvent(pixel) {
+    pixel.addEventListener('click', evt=>{
+        let colorPickerActive = document.querySelector('.color_active .color-picker');
+        
+        let colorPixel = evt.target.style.backgroundColor.slice(4,-1);
+        let pixelRGB = colorPixel.split(',');
+        let pixelR = +pixelRGB[0];
+        let pixelG = +pixelRGB[1].trim();
+        let pixelB = +pixelRGB[2].trim();
+        
+        let pixelHexR = pixelR.toString(16);
+        let pixelHexG = pixelG.toString(16);
+        let pixelHexB = pixelB.toString(16);
+
+        if (pixelHexR.length == 1) {
+            pixelHexR = '0' + pixelHexR; 
+        }
+
+        if (pixelHexG.length == 1) {
+            pixelHexG = '0' + pixelHexG; 
+        }
+
+        if (pixelHexB.length == 1) {
+            pixelHexB = '0' + pixelHexB; 
+        }
+
+        let pixelHex = '#' + pixelHexR + pixelHexG + pixelHexB;
+        
+        colorPickerActive.value = pixelHex;
+        
+        
+        colorCurrent = pixelHex;
+    });
+}
+
+gridColorsFill();
+
 iconsRotate();
