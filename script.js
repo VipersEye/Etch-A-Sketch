@@ -194,7 +194,7 @@ function colorMix (pixel) {
 }
 
 function gridClear() {
-    let pixels = document.querySelectorAll('.grid__pixel');
+    let pixels = document.querySelectorAll('.container_draw .grid__pixel');
     pixels.forEach(pixel => {
         pixel.style['background-color'] = 'transparent';
     });
