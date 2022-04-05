@@ -228,35 +228,24 @@ function pixelColorEvent(pixel) {
     pixel.addEventListener('click', evt=>{
         let colorPickerActive = document.querySelector('.color_active .color-picker');
         
-        let colorPixel = evt.target.style.backgroundColor.slice(4,-1);
-        let pixelRGB = colorPixel.split(',');
-        let pixelR = +pixelRGB[0];
-        let pixelG = +pixelRGB[1].trim();
-        let pixelB = +pixelRGB[2].trim();
+        colorPickerActive.value = colorRgbToHex(evt);
         
-        let pixelHexR = pixelR.toString(16);
-        let pixelHexG = pixelG.toString(16);
-        let pixelHexB = pixelB.toString(16);
-
-        if (pixelHexR.length == 1) {
-            pixelHexR = '0' + pixelHexR; 
-        }
-
-        if (pixelHexG.length == 1) {
-            pixelHexG = '0' + pixelHexG; 
-        }
-
-        if (pixelHexB.length == 1) {
-            pixelHexB = '0' + pixelHexB; 
-        }
-
-        let pixelHex = '#' + pixelHexR + pixelHexG + pixelHexB;
-        
-        colorPickerActive.value = pixelHex;
-        
-        
-        colorCurrent = pixelHex;
+        colorCurrent = colorRgbToHex(evt);
     });
+}
+
+function colorRgbToHex(evt ) {
+    let colorPixel = evt.target.style.backgroundColor.slice(4,-1);
+    let pixelHex = '#';
+    let pixelRGB = colorPixel.split(',');
+    pixelRGB.forEach(pixelColor => {
+        pixelColor = +pixelColor.trim();
+        pixelColor = pixelColor.toString(16);
+        pixelColor = (pixelColor.length == 1) ? '0' + pixelColor : pixelColor;
+        pixelHex = pixelHex + pixelColor;
+    });
+
+    return pixelHex;
 }
 
 gridColorsFill();
