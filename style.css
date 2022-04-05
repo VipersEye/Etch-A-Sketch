@@ -246,6 +246,8 @@ h1, h2, h3, h4, h5, h6 {
     border-color: #866105;
 
     overflow: hidden;
+
+    transition: border .25s linear;
 }
 
 .color_active {
