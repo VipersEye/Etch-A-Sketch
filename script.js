@@ -28,7 +28,6 @@ btnEraser.addEventListener('click', eraserSwitching);
 btnClear.addEventListener('click', gridClear);
 
 
-
 btnColorsDisplay.addEventListener('click', accordionSwitch);
 
 colorPickers.forEach(colorPicker => {
@@ -266,4 +265,5 @@ function accordionSwitch(evt) {
     else if (btnColorsDisplay.classList.contains('btn_on')){
         accordion.style.maxHeight = '';
     }
+
 }
