@@ -257,13 +257,21 @@ function colorRgbToHex(evt ) {
 }
 
 function accordionSwitch(evt) {
+    evt.stopPropagation();
     let accordion = document.querySelector('.color-accordion');
+    let arrows = document.querySelectorAll('.arrow');
     btnClassToggle(evt);
     if (btnColorsDisplay.classList.contains('btn_off')){
-        accordion.style.maxHeight = '34px';
+        accordion.style.maxHeight = '60px';
+        arrows.forEach(arrow => {
+            arrow.style.transform = 'translate3d(-50%,0,0) rotate(-45deg)';
+        });
     }
     else if (btnColorsDisplay.classList.contains('btn_on')){
         accordion.style.maxHeight = '';
+        arrows.forEach(arrow => {
+            arrow.style.transform = 'translate3d(-50%,0,0) rotate(135deg)';
+        });
     }
 
 }
