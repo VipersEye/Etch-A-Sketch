@@ -85,7 +85,20 @@ h1, h2, h3, h4, h5, h6 {
     height: 45px;
     margin-bottom: 20px;
 
+    color: var(--main-color);
+
+    border: 3px solid var(--main-color);
     border-radius: 7px;
+    background: var(--secondary-color);
+
+    cursor: pointer;
+
+    transition: color 0.3s, border 0.3s linear;
+}
+
+.btn:hover, .btn_on {
+    border-color: goldenrod;
+    color: goldenrod;
 }
 
 /* Panel_left ======================== */ 
@@ -162,22 +175,6 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%;
 }
 
-.random-color {
-
-}
-
-.random-color__thumb {
-
-}
-
-.eraser {
-
-}
-
-.btn_clear {
-
-}
-
 /* Panel_right ====================== */
 
 .panel_right {
@@ -189,9 +186,9 @@ h1, h2, h3, h4, h5, h6 {
 .color-accordion {
     position: relative;
     
-    max-height: 400px;
+    max-height: 402px;
     margin-bottom: 30px;
-    padding-top: 24px;
+    padding-top: 26px;
 
     display: flex;
     flex-direction: column;
@@ -201,20 +198,18 @@ h1, h2, h3, h4, h5, h6 {
     transition: max-height 1.4s ease-in-out;
 }
 
-.btn_accordion:hover .arrow:nth-child(1) {
-    opacity: 1;
-    top: 7px;
-}
-
-.btn_accordion:hover .arrow:nth-child(2) {
-    top: 24px;
-}
-
 .container_colors {
     width: 304px;
     height: 304px;
 
     border: 2px solid var(--main-color);
+    border-top: 0px;
+    border-bottom: 0px;
+}
+
+.container_colors .grid__pixel:hover {
+    border-color: #daa520;
+    transform: scale(1.3);
 }
 
 .btn_new-colors {
@@ -238,8 +233,19 @@ h1, h2, h3, h4, h5, h6 {
     border: none;
     border-radius: 0;
     border-bottom: 3px solid var(--main-color);
+}
 
-    cursor: pointer;
+.btn_accordion:hover .arrow {
+    border-color: #daa520;
+}
+
+.btn_accordion:hover .arrow:nth-child(1) {
+    opacity: 1;
+    top: 7px;
+}
+
+.btn_accordion:hover .arrow:nth-child(2) {
+    top: 24px;
 }
 
 .arrow {
@@ -256,7 +262,7 @@ h1, h2, h3, h4, h5, h6 {
 
     transform: translate3d(-50%,0,0) rotate(135deg);
 
-    transition: transform 0.5s ease-in, top 0.27s ease-in, opacity 0.2s ease-in;
+    transition: transform 0.5s ease-in, top 0.27s ease-in, opacity 0.2s ease-in, border 0.3s linear;
 
 }
 
@@ -274,6 +280,7 @@ h1, h2, h3, h4, h5, h6 {
 
     width: 60px;
     height: 60px;
+    margin: 0 5px;
 
     border-radius: 50%;
     border: 7px solid; 
@@ -323,5 +330,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .grid__pixel {
-    border: 1px solid var(--main-color); 
+    border: 1px solid var(--main-color);
+    
+    transition: border 0.3s ease-in-out, transform 0.3s ease-in-out;
 }

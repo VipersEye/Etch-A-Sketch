@@ -62,7 +62,7 @@ function modeSwitch(evt) {
         root.setProperty('--secondary-color', '#fff');
     }
     else if (btnModeSwitch.classList.contains('dark-mode')) {
-        root.setProperty('--main-color', 'goldenrod');
+        root.setProperty('--main-color', '#fff');
         root.setProperty('--secondary-color', '#000');
     }
 
