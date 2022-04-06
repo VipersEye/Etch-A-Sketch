@@ -8,6 +8,8 @@
 body {
     margin: 0;
     background: var(--secondary-color);
+
+    color: var(--main-color);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -40,6 +42,22 @@ h1, h2, h3, h4, h5, h6 {
 .footer {
     height: 80px;
     margin-top: auto;
+}
+
+.footer__icon {
+    width: 30px;
+    height: 30px;
+    margin-left: 10px;
+    
+    border-radius: 50%;
+
+    fill: var(--main-color);
+
+    transition: transform .5s ease-out;
+}
+
+.footer__icon:hover {
+    transform: scale(1.2);
 }
 
 .main-section {
