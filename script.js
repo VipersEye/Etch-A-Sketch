@@ -125,6 +125,10 @@ function eraserSwitching (evt) {
 }
 
 function gridCreate (gridType, gridSize){
+    if (gridType == 'container_draw') {
+        let gridSizeText = document.querySelector('.grid-size__label:last-child');
+        gridSizeText.textContent = `${gridSize} X ${gridSize}`;
+    }
     let container = document.querySelector(`.${gridType}`);
     let gridCurrent = container.querySelector(`.grid`);
     let gridNew = document.createElement('div');
