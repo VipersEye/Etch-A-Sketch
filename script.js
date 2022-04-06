@@ -48,6 +48,8 @@ gridColorsFill();
 
 iconsRotate();
 
+letterColorChange();
+
 function modeSwitch(evt) {
     let btnModeSwitch = evt.currentTarget;
     let circleSumMoon = btnModeSwitch.querySelector('.app-mode__inner');
@@ -281,5 +283,13 @@ function accordionSwitch(evt) {
             arrow.style.transform = 'translate3d(-50%,0,0) rotate(135deg)';
         });
     }
+}
 
+function letterColorChange() {
+    let letters = document.querySelectorAll('.h1-letter');
+    letters.forEach(letter => {
+        let colorRandom = `rgb(${Math.floor(Math.random()*256)},${Math.floor(Math.random()*256)},${Math.floor(Math.random()*256)})`;
+        letter.style.color = colorRandom;
+    });
+    setTimeout(letterColorChange, 350);
 }
