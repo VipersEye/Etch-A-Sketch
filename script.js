@@ -9,6 +9,8 @@ let btnClear = document.querySelector('.btn_clear');
 let btnColorsDisplay = document.querySelector('.btn_accordion');
 let colorMain = document.querySelector('.color_first');
 let colorPickers = document.querySelectorAll('.color');
+let btnNewColors = document.querySelector('.btn_new-colors');
+
 let colorCurrent = colorMain.value;
 
 btnModeSwitch.addEventListener('click', modeSwitch);
@@ -34,6 +36,8 @@ colorPickers.forEach(colorPicker => {
     colorPicker.addEventListener('change', currentColorChange);
     colorPicker.addEventListener('click', currentColorChange);
 });
+
+btnNewColors.addEventListener('click', gridColorsFill);
 
 equalGridWidth();
 
