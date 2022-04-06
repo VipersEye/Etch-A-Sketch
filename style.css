@@ -81,7 +81,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn {
-    
+    width: 50%;
+    height: 45px;
+    margin-bottom: 20px;
+
+    border-radius: 7px;
 }
 
 /* Panel_left ======================== */ 
@@ -97,7 +101,7 @@ h1, h2, h3, h4, h5, h6 {
     height: 100px;
     margin-bottom: 50px;
     padding-top: 34px;
-    
+
     overflow: hidden;
     cursor: pointer;
 }
@@ -143,15 +147,19 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .grid-size {
+    display: flex;
+    flex-direction: column;
 
+    width: 50%;
+    margin-bottom: 20px;
 }
 
 .grid-size__label {
-
+    align-self: center;
 }
 
 .grid-size__input {
-
+    width: 100%;
 }
 
 .random-color {
@@ -212,15 +220,23 @@ h1, h2, h3, h4, h5, h6 {
 .btn_new-colors {
     display: block;
     width: 100%;
-    height: 34px;
+    height: 38px;
+
+    border-radius: 0;
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
 }
 
 .btn_accordion {
-    height: 34px;
     flex: 0 0 auto;
+
+    width: 100%;
+    height: 34px;
+    margin-bottom: 0;
 
     background: transparent;
     border: none;
+    border-radius: 0;
     border-bottom: 3px solid var(--main-color);
 
     cursor: pointer;
