@@ -1,4 +1,5 @@
 /* common styles ======================= */
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
 
 :root {
     --main-color: #000; 
@@ -39,7 +40,10 @@ h1, h2, h3, h4, h5, h6 {
     height: 80px;
 }
 
-.h1-letter {
+.h1-letter, .h1-letter pre {
+    font-size: 40px;
+    font-family: 'Kaushan Script', cursive;
+
     transition: color 1s linear;
 }
 
@@ -82,6 +86,8 @@ h1, h2, h3, h4, h5, h6 {
     border: 5px solid var(--main-color);
 
     overflow: hidden;
+
+    transition: border .3s linear;
 }
 
 .btn {
@@ -322,6 +328,8 @@ h1, h2, h3, h4, h5, h6 {
     border: 2px solid var(--main-color);
     border-top: 4px solid var(--main-color);
     border-bottom: 4px solid var(--main-color);
+
+    transition: border .3s linear;
 }
 
 .grid {
