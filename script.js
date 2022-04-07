@@ -19,7 +19,17 @@ switchGridSize.addEventListener('input', (evt)=>{
     gridCreate('container_draw', evt.target.value);
 });
 
-btnRandomColor.addEventListener('click', btnClassToggle);
+btnRandomColor.addEventListener('click', (evt) => {
+    btnClassToggle(evt);
+    if (evt.target.classList.contains('btn_off')) {
+        evt.target.style.borderColor = '';
+        evt.target.style.color = '';
+        evt.target.style.transition = '';
+    } 
+    else {
+        evt.target.style.transition = 'color 1s linear, border 1s linear';
+    }
+});
 
 btnDisplayGrid.addEventListener('click', gridDisplayChange);
 
@@ -286,10 +296,11 @@ function accordionSwitch(evt) {
 }
 
 function letterColorChange() {
-    let letters = document.querySelectorAll('.h1-letter');
+    let letters = document.querySelectorAll('.h1-letter, .btn_random-color.btn_on');
     letters.forEach(letter => {
         let colorRandom = `rgb(${Math.floor(Math.random()*256)},${Math.floor(Math.random()*256)},${Math.floor(Math.random()*256)})`;
         letter.style.color = colorRandom;
+        letter.style.borderColor = colorRandom;
     });
     setTimeout(letterColorChange, 350);
 }
